@@ -8,7 +8,7 @@ Summary:	Intel(R) PRO/Wireless 2200 Driver for Linux
 Summary(pl):	Sterownik dla Linuksa do kart Intel(R) PRO/Wireless 2200
 Name:		ipw2200
 Version:	0.11
-%define		_rel	1
+%define		_rel	2
 Release:	%{_rel}
 License:	GPL v2
 Group:		Base/Kernel
@@ -19,7 +19,7 @@ URL:		http://ipw2200.sourceforge.net/
 BuildRequires:	kernel-source
 BuildRequires:	rpmbuild(macros) >= 1.153
 BuildRequires:	sed >= 4.0
-#Requires:	ipw2200-firmware >= 2
+Requires:	ipw2200-firmware >= 2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -35,7 +35,7 @@ Summary:	Linux kernel module for the Intel(R) PRO/Wireless 2200
 Summary(pl):	Modu³ j±dra Linuksa dla kart Intel(R) PRO/Wireless 2200
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
-#Requires:	ipw2200-firmware >= 2
+Requires:	ipw2200-firmware >= 2
 Requires:	hotplug
 %{?with_dist_kernel:%requires_releq_kernel_up}
 Requires(post,postun):	/sbin/depmod
@@ -54,7 +54,7 @@ Summary(pl):	Modu³ j±dra Linuksa SMP dla kart Intel(R) PRO/Wireless 2200
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 PreReq:		kernel-net-hostap = 0.1.3
-#Requires:	ipw2200-firmware >= 2
+Requires:	ipw2200-firmware >= 2
 Requires:	hotplug
 %{?with_dist_kernel:%requires_releq_kernel_smp}
 Requires(post,postun):	/sbin/depmod
@@ -129,14 +129,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 /lib/modules/%{_kernel_ver}/kernel/drivers/net/wireless/ieee80211*.ko*
 /lib/modules/%{_kernel_ver}/kernel/drivers/net/wireless/ipw2200.ko*
-#/lib/modules/%{_kernel_ver}/kernel/drivers/net/wireless/ieee80211_crypt_wep.ko*
-#/lib/modules/%{_kernel_ver}/kernel/drivers/net/wireless/ieee80211_crypt.ko*
 
 %if %{with smp} && %{with dist_kernel}
 %files -n kernel-smp-net-ipw2200
 %defattr(644,root,root,755)
 /lib/modules/%{_kernel_ver}smp/kernel/drivers/net/wireless/ieee80211*.ko*
 /lib/modules/%{_kernel_ver}smp/kernel/drivers/net/wireless/ipw2200.ko*
-#/lib/modules/%{_kernel_ver}smp/kernel/drivers/net/wireless/ieee80211_crypt_wep.ko*
-#/lib/modules/%{_kernel_ver}smp/kernel/drivers/net/wireless/ieee80211_crypt.ko*
 %endif
