@@ -7,8 +7,8 @@
 Summary:	Intel(R) PRO/Wireless 2200 Driver for Linux
 Summary(pl):	Sterownik dla Linuksa do kart Intel(R) PRO/Wireless 2200
 Name:		ipw2200
-Version:	0.11
-%define		_rel	2
+Version:	0.19
+%define		_rel	1
 Release:	%{_rel}
 License:	GPL v2
 Group:		Base/Kernel
@@ -18,7 +18,7 @@ URL:		http://ipw2200.sourceforge.net/
 %{?with_dist_kernel:BuildRequires:	kernel-module-build >= 2.6.7}
 BuildRequires:	rpmbuild(macros) >= 1.153
 BuildRequires:	sed >= 4.0
-Requires:	ipw2200-firmware >= 2
+Requires:	ipw2200-firmware >= 2.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,7 +34,7 @@ Summary:	Linux kernel module for the Intel(R) PRO/Wireless 2200
 Summary(pl):	Modu³ j±dra Linuksa dla kart Intel(R) PRO/Wireless 2200
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
-Requires:	ipw2200-firmware >= 2
+Requires:	ipw2200-firmware >= 2.2
 Requires:	hotplug
 %{?with_dist_kernel:%requires_releq_kernel_up}
 Requires(post,postun):	/sbin/depmod
@@ -53,7 +53,7 @@ Summary(pl):	Modu³ j±dra Linuksa SMP dla kart Intel(R) PRO/Wireless 2200
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 PreReq:		kernel-net-hostap = 0.1.3
-Requires:	ipw2200-firmware >= 2
+Requires:	ipw2200-firmware >= 2.2
 Requires:	hotplug
 %{?with_dist_kernel:%requires_releq_kernel_smp}
 Requires(post,postun):	/sbin/depmod
