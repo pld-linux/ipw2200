@@ -16,7 +16,6 @@ Source0:	http://dl.sourceforge.net/ipw2200/%{name}-%{version}.tgz
 # Source0-md5:	75661aedd5cc2fbfcd0c359cf98f72df
 URL:		http://ipw2200.sourceforge.net/
 %{?with_dist_kernel:BuildRequires:	kernel-module-build >= 2.6.7}
-BuildRequires:	kernel-source
 BuildRequires:	rpmbuild(macros) >= 1.153
 BuildRequires:	sed >= 4.0
 Requires:	ipw2200-firmware >= 2
@@ -123,7 +122,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %postun	-n kernel-smp-net-ipw2200
 %depmod %{_kernel_ver}smp
-
 
 %files -n kernel-net-ipw2200
 %defattr(644,root,root,755)
