@@ -13,7 +13,7 @@ Release:	%{_rel}
 License:	GPL v2
 Group:		Base/Kernel
 Source0:	http://dl.sourceforge.net/ipw2200/%{name}-%{version}.tgz
-# Source0-md5:	75661aedd5cc2fbfcd0c359cf98f72df
+# Source0-md5:	2feae844e72109c1bfb7341d1b025f16
 URL:		http://ipw2200.sourceforge.net/
 %{?with_dist_kernel:BuildRequires:	kernel-module-build >= 2.6.7}
 BuildRequires:	rpmbuild(macros) >= 1.153
