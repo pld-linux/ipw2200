@@ -53,7 +53,6 @@ Summary:	Linux SMP kernel module for the Intel(R) PRO/Wireless 2200
 Summary(pl):	Modu³ j±dra Linuksa SMP dla kart Intel(R) PRO/Wireless 2200
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
-PreReq:		kernel-net-hostap = 0.1.3
 Requires:	ipw2200-firmware >= 2.2
 Requires:	hotplug
 %{?with_dist_kernel:%requires_releq_kernel_smp}
