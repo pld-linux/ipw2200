@@ -7,13 +7,13 @@
 Summary:	Intel(R) PRO/Wireless 2200 Driver for Linux
 Summary(pl):	Sterownik dla Linuksa do kart Intel(R) PRO/Wireless 2200
 Name:		ipw2200
-Version:	1.0.1
+Version:	1.0.2
 %define		_rel	1
 Release:	%{_rel}
 License:	GPL v2
 Group:		Base/Kernel
-Source0:	http://dl.sourceforge.net/ipw2200/%{name}-%{version}.tgz
-# Source0-md5:	dd5f54b88c6615dbfe6dc3e7fc592a8e
+Source0:	http://belnet.dl.sourceforge.net/ipw2200/%{name}-%{version}.tgz
+# Source0-md5:	c5705acc163ade11d79add9162c2bdf9
 URL:		http://ipw2200.sourceforge.net/
 %{?with_dist_kernel:BuildRequires:	kernel-module-build >= 2.6.7}
 BuildRequires:	rpmbuild(macros) >= 1.153
@@ -76,24 +76,25 @@ PRO/Wireless 2200 oraz 2915.
 rm -rf built
 mkdir -p built/{nondist,smp,up}
 for cfg in %{?with_dist_kernel:%{?with_smp:smp} up}%{!?with_dist_kernel:nondist}; do
-    if [ ! -r "%{_kernelsrcdir}/config-$cfg" ]; then
-	exit 1
-    fi
-    rm -rf include
-    install -d include/{linux,config}
-    ln -sf %{_kernelsrcdir}/config-$cfg .config
-    ln -sf %{_kernelsrcdir}/include/linux/autoconf-$cfg.h include/linux/autoconf.h
-    ln -sf %{_kernelsrcdir}/include/asm-%{_target_base_arch} include/asm
-    touch include/config/MARKER
-    %{__make} -C %{_kernelsrcdir} clean \
-	RCS_FIND_IGNORE="-name '*.ko' -o" \
-	M=$PWD O=$PWD \
-	%{?with_verbose:V=1}
-    %{__make} -C %{_kernelsrcdir} modules \
-	CC="%{__cc}" CPP="%{__cpp}" \
-	M=$PWD O=$PWD \
-	%{?with_verbose:V=1}
-    mv *.ko built/$cfg
+	if [ ! -r "%{_kernelsrcdir}/config-$cfg" ]; then
+		exit 1
+	fi
+	rm -rf include
+	install -d include/{linux,config}
+	ln -sf %{_kernelsrcdir}/config-$cfg .config
+	ln -sf %{_kernelsrcdir}/include/linux/autoconf-$cfg.h include/linux/autoconf.h
+	ln -sf %{_kernelsrcdir}/include/asm-%{_target_base_arch} include/asm
+	ln -sf %{_kernelsrcdir}/scripts
+	touch include/config/MARKER
+	%{__make} -C %{_kernelsrcdir} clean \
+		RCS_FIND_IGNORE="-name '*.ko' -o" \
+		M=$PWD O=$PWD \
+		%{?with_verbose:V=1}
+	%{__make} -C %{_kernelsrcdir} modules \
+		CC="%{__cc}" CPP="%{__cpp}" \
+		M=$PWD O=$PWD \
+		%{?with_verbose:V=1}
+	mv *.ko built/$cfg
 done
 
 %install
