@@ -7,13 +7,13 @@
 Summary:	Intel(R) PRO/Wireless 2200 Driver for Linux
 Summary(pl):	Sterownik dla Linuksa do kart Intel(R) PRO/Wireless 2200
 Name:		ipw2200
-Version:	1.0.4
-%define		_rel	3
+Version:	1.0.6
+%define		_rel	1
 Release:	%{_rel}
 License:	GPL v2
 Group:		Base/Kernel
 Source0:	http://dl.sourceforge.net/ipw2200/%{name}-%{version}.tgz
-# Source0-md5:	b79d75d78ec226ac1a05790dc185e732
+# Source0-md5:	d49f301ce8cffbd1cfbdb51061df3ac8
 URL:		http://ipw2200.sourceforge.net/
 %{?with_dist_kernel:BuildRequires:	kernel-module-build >= 2.6.7}
 BuildRequires:	rpmbuild(macros) >= 1.153
@@ -87,6 +87,7 @@ for cfg in %{?with_dist_kernel:%{?with_smp:smp} up}%{!?with_dist_kernel:nondist}
                 ln -sf %{_kernelsrcdir}/scripts
         %endif
 	touch include/config/MARKER
+	export IEEE80211_INC=/lib/modules/%{_kernel_ver}/include
 	%{__make} -C %{_kernelsrcdir} clean \
 		RCS_FIND_IGNORE="-name '*.ko' -o" \
 		M=$PWD O=$PWD \
@@ -128,12 +129,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n kernel-net-ipw2200
 %defattr(644,root,root,755)
-/lib/modules/%{_kernel_ver}/kernel/drivers/net/wireless/ieee80211*.ko*
 /lib/modules/%{_kernel_ver}/kernel/drivers/net/wireless/ipw2200.ko*
 
 %if %{with smp} && %{with dist_kernel}
 %files -n kernel-smp-net-ipw2200
 %defattr(644,root,root,755)
-/lib/modules/%{_kernel_ver}smp/kernel/drivers/net/wireless/ieee80211*.ko*
 /lib/modules/%{_kernel_ver}smp/kernel/drivers/net/wireless/ipw2200.ko*
 %endif
