@@ -1,4 +1,7 @@
 #
+# TODO:
+# - fix the include dir in kernel-net-ieee80211 and change IEEE80211_INC here (l. 93)
+#
 # Conditional build:
 %bcond_without	dist_kernel	# allow non-distribution kernel
 %bcond_without	smp		# don't build SMP module
