@@ -18,6 +18,7 @@ Group:		Base/Kernel
 Source0:	http://dl.sourceforge.net/ipw2200/%{name}-%{version}.tgz
 # Source0-md5:	d49f301ce8cffbd1cfbdb51061df3ac8
 URL:		http://ipw2200.sourceforge.net/
+BuildRequires:	ieee80211-devel
 %{?with_dist_kernel:BuildRequires:	kernel-module-build >= 2.6.7}
 BuildRequires:	rpmbuild(macros) >= 1.153
 BuildRequires:	sed >= 4.0
