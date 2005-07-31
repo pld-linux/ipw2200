@@ -42,6 +42,7 @@ Group:		Base/Kernel
 Requires:	ipw2200-firmware = 2.3
 Requires:	hotplug
 %{?with_dist_kernel:%requires_releq_kernel_up}
+Requires:	kernel-net-ieee80211
 Requires(post,postun):	/sbin/depmod
 
 %description -n kernel-net-ipw2200
@@ -60,6 +61,7 @@ Group:		Base/Kernel
 Requires:	ipw2200-firmware = 2.3
 Requires:	hotplug
 %{?with_dist_kernel:%requires_releq_kernel_smp}
+Requires:	kernel-smp-net-ieee80211
 Requires(post,postun):	/sbin/depmod
 
 %description -n kernel-smp-net-ipw2200
