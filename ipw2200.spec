@@ -11,7 +11,7 @@ Summary:	Intel(R) PRO/Wireless 2200 Driver for Linux
 Summary(pl):	Sterownik dla Linuksa do kart Intel(R) PRO/Wireless 2200
 Name:		ipw2200
 Version:	1.0.6
-%define		_rel	1
+%define		_rel	2
 Release:	%{_rel}
 License:	GPL v2
 Group:		Base/Kernel
@@ -39,10 +39,10 @@ Summary:	Linux kernel module for the Intel(R) PRO/Wireless 2200
 Summary(pl):	Modu³ j±dra Linuksa dla kart Intel(R) PRO/Wireless 2200
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
-Requires:	ipw2200-firmware = 2.3
 Requires:	hotplug
-%{?with_dist_kernel:%requires_releq_kernel_up}
+Requires:	ipw2200-firmware = 2.3
 Requires:	kernel-net-ieee80211
+%{?with_dist_kernel:%requires_releq_kernel_up}
 Requires(post,postun):	/sbin/depmod
 
 %description -n kernel-net-ipw2200
@@ -58,10 +58,10 @@ Summary:	Linux SMP kernel module for the Intel(R) PRO/Wireless 2200
 Summary(pl):	Modu³ j±dra Linuksa SMP dla kart Intel(R) PRO/Wireless 2200
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
-Requires:	ipw2200-firmware = 2.3
 Requires:	hotplug
-%{?with_dist_kernel:%requires_releq_kernel_smp}
+Requires:	ipw2200-firmware = 2.3
 Requires:	kernel-smp-net-ieee80211
+%{?with_dist_kernel:%requires_releq_kernel_smp}
 Requires(post,postun):	/sbin/depmod
 
 %description -n kernel-smp-net-ipw2200
@@ -93,7 +93,7 @@ for cfg in %{?with_dist_kernel:%{?with_smp:smp} up}%{!?with_dist_kernel:nondist}
                 ln -sf %{_kernelsrcdir}/scripts
         %endif
 	touch include/config/MARKER
-	export IEEE80211_INC=/lib/modules/%{_kernel_ver}/include
+	export IEEE80211_INC=%{_kernelsrcdir}/include
 	%{__make} -C %{_kernelsrcdir} clean \
 		RCS_FIND_IGNORE="-name '*.ko' -o" \
 		M=$PWD O=$PWD \
