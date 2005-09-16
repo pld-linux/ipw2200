@@ -1,7 +1,4 @@
 #
-# TODO:
-# - fix the include dir in kernel-net-ieee80211 and change IEEE80211_INC here (l. 93)
-#
 # Conditional build:
 %bcond_without	dist_kernel	# allow non-distribution kernel
 %bcond_without	smp		# don't build SMP module
@@ -17,6 +14,8 @@ License:	GPL v2
 Group:		Base/Kernel
 Source0:	http://dl.sourceforge.net/ipw2200/%{name}-%{version}.tgz
 # Source0-md5:	d49f301ce8cffbd1cfbdb51061df3ac8
+# from http://people.redhat.com/pjones/ipw2200/broadcast.patch
+Patch0:		%{name}-broadcast.patch
 URL:		http://ipw2200.sourceforge.net/
 BuildRequires:	ieee80211-devel
 %{?with_dist_kernel:BuildRequires:	kernel-module-build >= 2.6.7}
@@ -74,6 +73,9 @@ PRO/Wireless 2200 oraz 2915.
 
 %prep
 %setup -q
+# only for kernels >= 2.6.13
+# (I don't know if it works with earlier)
+%patch0 -p1
 #sed -i 's:CONFIG_IPW_DEBUG=y::' Makefile
 
 %build
