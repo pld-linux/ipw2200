@@ -1,0 +1,35 @@
+--- ipw2200-1.0.6/ipw2200.c.orig	2005-08-26 16:55:38.000000000 -0400
++++ ipw2200-1.0.6/ipw2200.c	2005-09-11 15:08:54.000000000 -0400
+@@ -7657,6 +7657,12 @@
+ 	}
+ }
+ 
++static inline int ipw_is_broadcast_ether_addr(const u8 *addr)
++{
++    return ((addr[0] & addr[1] & addr[2] & 
++        addr[3] & addr[4] & addr[5]) == 0xff);
++}
++
+ static inline int is_network_packet(struct ipw_priv *priv,
+ 				    struct ieee80211_hdr *header)
+ {
+@@ -7669,7 +7675,8 @@
+ 			return 0;
+ 
+ 		/* multicast packets to our IBSS go through */
+-		if (is_multicast_ether_addr(header->addr1))
++		if (is_multicast_ether_addr(header->addr1) ||
++                    ipw_is_broadcast_ether_addr(header->addr1))
+ 			return !memcmp(header->addr3, priv->bssid, ETH_ALEN);
+ 
+ 		/* packets to our adapter go through */
+@@ -7682,7 +7689,8 @@
+ 			return 0;
+ 
+ 		/* {broad,multi}cast packets to our IBSS go through */
+-		if (is_multicast_ether_addr(header->addr1))
++		if (is_multicast_ether_addr(header->addr1) ||
++                    ipw_is_broadcast_ether_addr(header->addr1))
+ 			return !memcmp(header->addr2, priv->bssid, ETH_ALEN);
+ 
+ 		/* packets to our adapter go through */
