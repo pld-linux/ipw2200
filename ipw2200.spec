@@ -7,15 +7,16 @@
 Summary:	Intel(R) PRO/Wireless 2200 Driver for Linux
 Summary(pl):	Sterownik dla Linuksa do kart Intel(R) PRO/Wireless 2200
 Name:		ipw2200
-Version:	1.0.8
-%define		_rel	2.1
+Version:	1.0.9
+%define		_rel	1
 Release:	%{_rel}
 License:	GPL v2
 Group:		Base/Kernel
 Source0:	http://dl.sourceforge.net/ipw2200/%{name}-%{version}.tgz
-# Source0-md5:	c5d32f7c0e126e1cef4fa76a3f331ab3
+# Source0-md5:	0e235159487ab5bee2c41cb75272bbba
+Patch0:		%{name}-qos_param_fix.patch
 URL:		http://ipw2200.sourceforge.net/
-BuildRequires:	ieee80211-devel >= 1.1.6
+BuildRequires:	ieee80211-devel >= 1.1.7
 %{?with_dist_kernel:BuildRequires:	kernel-module-build >= 2.6.7}
 BuildRequires:	rpmbuild(macros) >= 1.153
 BuildRequires:	sed >= 4.0
@@ -71,6 +72,7 @@ PRO/Wireless 2200 oraz 2915.
 
 %prep
 %setup -q
+%patch0 -p1
 #sed -i 's:CONFIG_IPW_DEBUG=y::' Makefile
 
 %build
