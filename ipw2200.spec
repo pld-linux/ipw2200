@@ -7,16 +7,15 @@
 Summary:	Intel(R) PRO/Wireless 2200 Driver for Linux
 Summary(pl):	Sterownik dla Linuksa do kart Intel(R) PRO/Wireless 2200
 Name:		ipw2200
-Version:	1.0.9
+Version:	1.0.10
 %define		_rel	1
 Release:	%{_rel}
 License:	GPL v2
 Group:		Base/Kernel
 Source0:	http://dl.sourceforge.net/ipw2200/%{name}-%{version}.tgz
-# Source0-md5:	0e235159487ab5bee2c41cb75272bbba
-Patch0:		%{name}-qos_param_fix.patch
+# Source0-md5:	c9d7e49a82a0398f88db4222033ae434
 URL:		http://ipw2200.sourceforge.net/
-BuildRequires:	ieee80211-devel >= 1.1.7
+BuildRequires:	ieee80211-devel >= 1.1.8
 %{?with_dist_kernel:BuildRequires:	kernel-module-build >= 2.6.7}
 BuildRequires:	rpmbuild(macros) >= 1.153
 BuildRequires:	sed >= 4.0
@@ -39,7 +38,7 @@ Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires:	hotplug
 Requires:	ipw2200-firmware = 2.4
-Requires:	kernel-net-ieee80211 >= 1.1.6
+Requires:	kernel-net-ieee80211 >= 1.1.8
 %{?with_dist_kernel:%requires_releq_kernel_up}
 Requires(post,postun):	/sbin/depmod
 
@@ -58,7 +57,7 @@ Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires:	hotplug
 Requires:	ipw2200-firmware = 2.4
-Requires:	kernel-smp-net-ieee80211 >= 1.1.6
+Requires:	kernel-smp-net-ieee80211 >= 1.1.8
 %{?with_dist_kernel:%requires_releq_kernel_smp}
 Requires(post,postun):	/sbin/depmod
 
@@ -72,7 +71,6 @@ PRO/Wireless 2200 oraz 2915.
 
 %prep
 %setup -q
-%patch0 -p1
 #sed -i 's:CONFIG_IPW_DEBUG=y::' Makefile
 
 %build
