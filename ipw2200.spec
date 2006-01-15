@@ -8,7 +8,7 @@ Summary:	Intel(R) PRO/Wireless 2200 Driver for Linux
 Summary(pl):	Sterownik dla Linuksa do kart Intel(R) PRO/Wireless 2200
 Name:		ipw2200
 Version:	1.0.10
-%define		_rel	1
+%define		_rel	2
 Release:	%{_rel}
 License:	GPL v2
 Group:		Base/Kernel
@@ -108,12 +108,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 cd built
-install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}{,smp}/kernel/drivers/net/wireless
+install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}{,smp}/misc
 install %{?with_dist_kernel:up}%{!?with_dist_kernel:nondist}/*.ko \
-	$RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/kernel/drivers/net/wireless
+	$RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc
 %if %{with smp} && %{with dist_kernel}
 install smp/*.ko \
-	$RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/kernel/drivers/net/wireless
+	$RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/misc
 %endif
 
 %clean
@@ -133,10 +133,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n kernel-net-ipw2200
 %defattr(644,root,root,755)
-/lib/modules/%{_kernel_ver}/kernel/drivers/net/wireless/ipw2200.ko*
+/lib/modules/%{_kernel_ver}/misc/ipw2200.ko*
 
 %if %{with smp} && %{with dist_kernel}
 %files -n kernel-smp-net-ipw2200
 %defattr(644,root,root,755)
-/lib/modules/%{_kernel_ver}smp/kernel/drivers/net/wireless/ipw2200.ko*
+/lib/modules/%{_kernel_ver}smp/misc/ipw2200.ko*
 %endif
