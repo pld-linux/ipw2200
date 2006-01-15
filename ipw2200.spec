@@ -106,7 +106,6 @@ done
 %install
 rm -rf $RPM_BUILD_ROOT
 
-
 cd built
 install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}{,smp}/misc
 install %{?with_dist_kernel:up}%{!?with_dist_kernel:nondist}/ipw2200.ko \
@@ -130,6 +129,24 @@ rm -rf $RPM_BUILD_ROOT
 
 %postun	-n kernel-smp-net-ipw2200
 %depmod %{_kernel_ver}smp
+
+%triggerpostun -n kernel-net-ipw2200 -- kernel-net-ipw2200 < 1.0.10-3
+%banner kernel-net-ipw2200-1.0.10-3 <<'EOF'
+Current kernel provides ipw2200 module.
+This package contains currently module named ipw2200_current.
+
+If you want to use this module do:
+echo "alias ipw2200 ipw2200_current" >> /etc/modprobe.conf
+EOF
+
+%triggerpostun -n kernel-smp-net-ipw2200 -- kernel-smp-net-ipw2200 < 1.0.10-3
+%banner kernel-smp-net-ipw2200-1.0.10-3 <<'EOF'
+Current kernel provides ipw2200 module.
+This package contains currently module named ipw2200_current.
+
+If you want to use this module do:
+echo "alias ipw2200 ipw2200_current" >> /etc/modprobe.conf
+EOF
 
 %files -n kernel-net-ipw2200
 %defattr(644,root,root,755)
