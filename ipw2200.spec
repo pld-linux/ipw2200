@@ -38,7 +38,7 @@ Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires:	hotplug
 Requires:	ipw2200-firmware = 2.4
-Requires:	kernel-net-ieee80211 >= 1.1.8
+Requires:	kernel-net-ieee80211 >= 1.1.12
 %{?with_dist_kernel:%requires_releq_kernel_up}
 Requires(post,postun):	/sbin/depmod
 
@@ -57,7 +57,7 @@ Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires:	hotplug
 Requires:	ipw2200-firmware = 2.4
-Requires:	kernel-smp-net-ieee80211 >= 1.1.8
+Requires:	kernel-smp-net-ieee80211 >= 1.1.12
 %{?with_dist_kernel:%requires_releq_kernel_smp}
 Requires(post,postun):	/sbin/depmod
 
