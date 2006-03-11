@@ -8,7 +8,7 @@ Summary:	Intel(R) PRO/Wireless 2200 Driver for Linux
 Summary(pl):	Sterownik dla Linuksa do kart Intel(R) PRO/Wireless 2200
 Name:		ipw2200
 Version:	1.1.0
-%define		_rel	1
+%define		_rel	2
 Release:	%{_rel}
 License:	GPL v2
 Group:		Base/Kernel
@@ -105,14 +105,20 @@ done
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}{,smp}/misc \
+	 $RPM_BUILD_ROOT%{_sysconfdir}/modprobe.d/%{_kernel_ver}{,smp}
 
 cd built
-install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}{,smp}/misc
 install %{?with_dist_kernel:up}%{!?with_dist_kernel:nondist}/ipw2200.ko \
 	$RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc/ipw2200_current.ko
+echo "alias ipw2200 ipw2200_current" \
+	>> $RPM_BUILD_ROOT%{_sysconfdir}/modprobe.d/%{_kernel_ver}/ipw2200.conf
+
 %if %{with smp} && %{with dist_kernel}
 install smp/ipw2200.ko \
 	$RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/misc/ipw2200_current.ko
+echo "alias ipw2200 ipw2200_current" \
+	>> $RPM_BUILD_ROOT%{_sysconfdir}/modprobe.d/%{_kernel_ver}smp/ipw2200.conf
 %endif
 
 %clean
@@ -130,30 +136,14 @@ rm -rf $RPM_BUILD_ROOT
 %postun	-n kernel-smp-net-ipw2200
 %depmod %{_kernel_ver}smp
 
-%triggerpostun -n kernel-net-ipw2200 -- kernel-net-ipw2200 < 1.0.10-3
-%banner kernel-net-ipw2200-1.0.10-3 <<'EOF'
-Current kernel provides ipw2200 module.
-This package contains currently module named ipw2200_current.
-
-If you want to use this module do:
-echo "alias ipw2200 ipw2200_current" >> /etc/modprobe.conf
-EOF
-
-%triggerpostun -n kernel-smp-net-ipw2200 -- kernel-smp-net-ipw2200 < 1.0.10-3
-%banner kernel-smp-net-ipw2200-1.0.10-3 <<'EOF'
-Current kernel provides ipw2200 module.
-This package contains currently module named ipw2200_current.
-
-If you want to use this module do:
-echo "alias ipw2200 ipw2200_current" >> /etc/modprobe.conf
-EOF
-
 %files -n kernel-net-ipw2200
 %defattr(644,root,root,755)
 /lib/modules/%{_kernel_ver}/misc/ipw2200*.ko*
+%{_sysconfdir}/modprobe.d/%{_kernel_ver}/ipw2200.conf
 
 %if %{with smp} && %{with dist_kernel}
 %files -n kernel-smp-net-ipw2200
 %defattr(644,root,root,755)
 /lib/modules/%{_kernel_ver}smp/misc/ipw2200*.ko*
+%{_sysconfdir}/modprobe.d/%{_kernel_ver}smp/ipw2200.conf
 %endif
