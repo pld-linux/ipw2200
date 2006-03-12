@@ -41,6 +41,7 @@ Requires:	ipw2200-firmware = 2.4
 Requires:	kernel-net-ieee80211 >= 1.1.12
 %{?with_dist_kernel:%requires_releq_kernel_up}
 Requires(post,postun):	/sbin/depmod
+Requires:	module-init-tools >= 3.2.2-2
 
 %description -n kernel-net-ipw2200
 This package contains Linux kernel drivers for the Intel(R)
@@ -60,6 +61,7 @@ Requires:	ipw2200-firmware = 2.4
 Requires:	kernel-smp-net-ieee80211 >= 1.1.12
 %{?with_dist_kernel:%requires_releq_kernel_smp}
 Requires(post,postun):	/sbin/depmod
+Requires:	module-init-tools >= 3.2.2-2
 
 %description -n kernel-smp-net-ipw2200
 This package contains Linux SMP kernel drivers for the Intel(R)
