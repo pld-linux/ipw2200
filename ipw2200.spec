@@ -6,6 +6,7 @@
 #
 %define		_rel	1
 Summary:	Intel(R) PRO/Wireless 2200 Driver for Linux
+Summary(de):	Intel(R) PRO/Wireless 2200 Treiber für Linux
 Summary(pl):	Sterownik dla Linuksa do kart Intel(R) PRO/Wireless 2200
 Name:		ipw2200
 Version:	1.1.2
@@ -29,12 +30,17 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 This project was created by Intel to enable support for the Intel
 PRO/Wireless 2200/2915 Network Connection mini PCI adapter.
 
+%description -l de
+Dieses Projekt wurde von Intel gestartet um die Wartung von mini
+PCI Intel PRO/Wireless 2200/2915 Netz Karten zu ermöglichen.
+
 %description -l pl
 Ten projekt zosta³ stworzony przez Intela, aby umo¿liwiæ obs³ugê kart
 mini PCI Intel PRO/Wireless 2200/2915 Network Connection.
 
-%package -n kernel-net-ipw2200
+%package -n kernel-net-%{name}
 Summary:	Linux kernel module for the Intel(R) PRO/Wireless 2200
+Summary(de):	Linux Kernel Modul für Intel(R) PRo/Wireless 2200 Netzkarten
 Summary(pl):	Modu³ j±dra Linuksa dla kart Intel(R) PRO/Wireless 2200
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
@@ -45,16 +51,21 @@ Requires:	kernel-net-ieee80211 >= 1.1.12
 Requires(post,postun):	/sbin/depmod
 Requires:	module-init-tools >= 3.2.2-2
 
-%description -n kernel-net-ipw2200
+%description -n kernel-net-%{name}
 This package contains Linux kernel drivers for the Intel(R)
 PRO/Wireless 2200 and 2915.
 
-%description -n kernel-net-ipw2200 -l pl
+%description -n kernel-net-%{name} -l de
+Dieses Packet enthält Linux Kernel Treiber für Intel(R)
+PRO/Wireless 2200 und 2915 Netzkarten.
+
+%description -n kernel-net-%{name} -l pl
 Ten pakiet zawiera sterowniki j±dra Linuksa dla kart Intel(R)
 PRO/Wireless 2200 oraz 2915.
 
-%package -n kernel-smp-net-ipw2200
+%package -n kernel-smp-net-%{name}
 Summary:	Linux SMP kernel module for the Intel(R) PRO/Wireless 2200
+Summary(de):	Linux SMP Kernel Modul für Intel(R) PRO/Wireless 2200 Netzkarten
 Summary(pl):	Modu³ j±dra Linuksa SMP dla kart Intel(R) PRO/Wireless 2200
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
@@ -65,11 +76,15 @@ Requires:	kernel-smp-net-ieee80211 >= 1.1.12
 Requires(post,postun):	/sbin/depmod
 Requires:	module-init-tools >= 3.2.2-2
 
-%description -n kernel-smp-net-ipw2200
+%description -n kernel-smp-net-%{name}
 This package contains Linux SMP kernel drivers for the Intel(R)
 PRO/Wireless 2200 and 2915.
 
-%description -n kernel-smp-net-ipw2200 -l pl
+%description -n kernel-smp-net-%{name} -l de
+Dieses Packet enthält Linux SMP Kernel Treiber für Intel(R)
+PRO/Wireless 2200 und 2915 Netzkarten.
+
+%description -n kernel-smp-net-%{name} -l pl
 Ten pakiet zawiera sterowniki j±dra Linuksa SMP dla kart Intel(R)
 PRO/Wireless 2200 oraz 2915.
 
