@@ -1,0 +1,11 @@
+--- ipw2200-1.1.2/ipw2200.c~	2006-04-01 03:47:24.000000000 +0200
++++ ipw2200-1.1.2/ipw2200.c	2006-05-15 22:16:44.939358250 +0200
+@@ -33,6 +33,8 @@
+ #include "ipw2200.h"
+ #include <linux/version.h>
+ 
++#define CONFIG_IPW2200_MONITOR
++
+ #ifndef KBUILD_EXTMOD
+ #define VK "k"
+ #else
