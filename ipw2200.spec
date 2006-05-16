@@ -17,6 +17,7 @@ Source0:	http://dl.sourceforge.net/ipw2200/%{name}-%{version}.tgz
 # Source0-md5:	f235318ea2fb711c3f1cb066080b2fd6
 # http://ipw2200.sourceforge.net/patches/
 Patch0:		%{name}-1.1.1-rtap_iface.patch
+Patch1:		%{name}-monitor.patch
 URL:		http://ipw2200.sourceforge.net/
 BuildRequires:	ieee80211-devel >= 1.1.12
 %{?with_dist_kernel:BuildRequires:	kernel-module-build >= 3:2.6.7}
@@ -91,6 +92,7 @@ PRO/Wireless 2200 oraz 2915.
 %prep
 %setup -q
 #%patch0 -p1
+%patch1 -p1
 #sed -i 's:CONFIG_IPW_DEBUG=y::' Makefile
 
 %build
