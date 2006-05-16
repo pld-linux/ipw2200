@@ -15,9 +15,8 @@ License:	GPL v2
 Group:		Base/Kernel
 Source0:	http://dl.sourceforge.net/ipw2200/%{name}-%{version}.tgz
 # Source0-md5:	f235318ea2fb711c3f1cb066080b2fd6
-# http://ipw2200.sourceforge.net/patches/
-Patch0:		%{name}-1.1.1-rtap_iface.patch
-Patch1:		%{name}-monitor.patch
+# http:		//ipw2200.sourceforge.net/patches/
+Patch0:		%{name}-monitor.patch
 URL:		http://ipw2200.sourceforge.net/
 BuildRequires:	ieee80211-devel >= 1.1.12
 %{?with_dist_kernel:BuildRequires:	kernel-module-build >= 3:2.6.7}
@@ -32,8 +31,8 @@ This project was created by Intel to enable support for the Intel
 PRO/Wireless 2200/2915 Network Connection mini PCI adapter.
 
 %description -l de
-Dieses Projekt wurde von Intel gestartet um die Wartung von mini
-PCI Intel PRO/Wireless 2200/2915 Netz Karten zu ermöglichen.
+Dieses Projekt wurde von Intel gestartet um die Wartung von mini PCI
+Intel PRO/Wireless 2200/2915 Netz Karten zu ermöglichen.
 
 %description -l pl
 Ten projekt zosta³ stworzony przez Intela, aby umo¿liwiæ obs³ugê kart
@@ -57,8 +56,8 @@ This package contains Linux kernel drivers for the Intel(R)
 PRO/Wireless 2200 and 2915.
 
 %description -n kernel-net-%{name} -l de
-Dieses Packet enthält Linux Kernel Treiber für Intel(R)
-PRO/Wireless 2200 und 2915 Netzkarten.
+Dieses Packet enthält Linux Kernel Treiber für Intel(R) PRO/Wireless
+2200 und 2915 Netzkarten.
 
 %description -n kernel-net-%{name} -l pl
 Ten pakiet zawiera sterowniki j±dra Linuksa dla kart Intel(R)
@@ -91,8 +90,7 @@ PRO/Wireless 2200 oraz 2915.
 
 %prep
 %setup -q
-#%patch0 -p1
-%patch1 -p1
+%patch0 -p1
 #sed -i 's:CONFIG_IPW_DEBUG=y::' Makefile
 
 %build
