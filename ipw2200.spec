@@ -15,7 +15,6 @@ License:	GPL v2
 Group:		Base/Kernel
 Source0:	http://dl.sourceforge.net/ipw2200/%{name}-%{version}.tgz
 # Source0-md5:	f235318ea2fb711c3f1cb066080b2fd6
-# http:		//ipw2200.sourceforge.net/patches/
 Patch0:		%{name}-monitor.patch
 URL:		http://ipw2200.sourceforge.net/
 BuildRequires:	ieee80211-devel >= 1.1.12
