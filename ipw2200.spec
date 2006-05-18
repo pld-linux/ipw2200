@@ -31,7 +31,7 @@ PRO/Wireless 2200/2915 Network Connection mini PCI adapter.
 
 %description -l de
 Dieses Projekt wurde von Intel gestartet um die Wartung von mini PCI
-Intel PRO/Wireless 2200/2915 Netz Karten zu ermöglichen.
+Intel PRO/Wireless 2200/2915 Netzwerk Karten zu ermöglichen.
 
 %description -l pl
 Ten projekt zosta³ stworzony przez Intela, aby umo¿liwiæ obs³ugê kart
@@ -39,7 +39,7 @@ mini PCI Intel PRO/Wireless 2200/2915 Network Connection.
 
 %package -n kernel-net-%{name}
 Summary:	Linux kernel module for the Intel(R) PRO/Wireless 2200
-Summary(de):	Linux Kernel Modul für Intel(R) PRo/Wireless 2200 Netzkarten
+Summary(de):	Linux Kernel Modul für Intel(R) PRo/Wireless 2200 Netzwerk Karten
 Summary(pl):	Modu³ j±dra Linuksa dla kart Intel(R) PRO/Wireless 2200
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
@@ -56,7 +56,7 @@ PRO/Wireless 2200 and 2915.
 
 %description -n kernel-net-%{name} -l de
 Dieses Packet enthält Linux Kernel Treiber für Intel(R) PRO/Wireless
-2200 und 2915 Netzkarten.
+2200 und 2915 Netzwerk Karten.
 
 %description -n kernel-net-%{name} -l pl
 Ten pakiet zawiera sterowniki j±dra Linuksa dla kart Intel(R)
@@ -64,7 +64,7 @@ PRO/Wireless 2200 oraz 2915.
 
 %package -n kernel-smp-net-%{name}
 Summary:	Linux SMP kernel module for the Intel(R) PRO/Wireless 2200
-Summary(de):	Linux SMP Kernel Modul für Intel(R) PRO/Wireless 2200 Netzkarten
+Summary(de):	Linux SMP Kernel Modul für Intel(R) PRO/Wireless 2200 Netzwerk Karten
 Summary(pl):	Modu³ j±dra Linuksa SMP dla kart Intel(R) PRO/Wireless 2200
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
@@ -81,7 +81,7 @@ PRO/Wireless 2200 and 2915.
 
 %description -n kernel-smp-net-%{name} -l de
 Dieses Packet enthält Linux SMP Kernel Treiber für Intel(R)
-PRO/Wireless 2200 und 2915 Netzkarten.
+PRO/Wireless 2200 und 2915 Netzwerk Karten.
 
 %description -n kernel-smp-net-%{name} -l pl
 Ten pakiet zawiera sterowniki j±dra Linuksa SMP dla kart Intel(R)
