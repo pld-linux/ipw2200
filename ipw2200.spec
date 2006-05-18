@@ -149,25 +149,25 @@ echo "alias ipw2200 ipw2200_current" \
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-n kernel-net-ipw2200
+%post	-n kernel-net-%{name}
 %depmod %{_kernel_ver}
 
-%postun	-n kernel-net-ipw2200
+%postun	-n kernel-net-%{name}
 %depmod %{_kernel_ver}
 
-%post	-n kernel-smp-net-ipw2200
+%post	-n kernel-smp-net-%{name}
 %depmod %{_kernel_ver}smp
 
-%postun	-n kernel-smp-net-ipw2200
+%postun	-n kernel-smp-net-%{name}
 %depmod %{_kernel_ver}smp
 
-%files -n kernel-net-ipw2200
+%files -n kernel-net-%{name}
 %defattr(644,root,root,755)
 /lib/modules/%{_kernel_ver}/misc/ipw2200*.ko*
 %{_sysconfdir}/modprobe.d/%{_kernel_ver}/ipw2200.conf
 
 %if %{with smp} && %{with dist_kernel}
-%files -n kernel-smp-net-ipw2200
+%files -n kernel-smp-net-%{name}
 %defattr(644,root,root,755)
 /lib/modules/%{_kernel_ver}smp/misc/ipw2200*.ko*
 %{_sysconfdir}/modprobe.d/%{_kernel_ver}smp/ipw2200.conf
