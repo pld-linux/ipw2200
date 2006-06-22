@@ -5,6 +5,8 @@
 %bcond_with	verbose		# verbose build (V=1)
 #
 %define		_rel	1
+%define		_ieeever	1.1.13
+%define		_fwver	3.0
 Summary:	Intel(R) PRO/Wireless 2200 Driver for Linux
 Summary(de):	Intel(R) PRO/Wireless 2200 Treiber für Linux
 Summary(pl):	Sterownik dla Linuksa do kart Intel(R) PRO/Wireless 2200
@@ -17,11 +19,11 @@ Source0:	http://dl.sourceforge.net/ipw2200/%{name}-%{version}.tgz
 # Source0-md5:	3ff9c1a306a02b24a38449db11267885
 Patch0:		%{name}-monitor.patch
 URL:		http://ipw2200.sourceforge.net/
-BuildRequires:	ieee80211-devel >= 1.1.13
+BuildRequires:	ieee80211-devel >= %{_ieeever}
 %{?with_dist_kernel:BuildRequires:	kernel-module-build >= 3:2.6.7}
 BuildRequires:	rpmbuild(macros) >= 1.153
 BuildRequires:	sed >= 4.0
-Requires:	ipw2200-firmware = 3.0
+Requires:	ipw2200-firmware = %{_fwver}
 ExclusiveArch:	%{ix86} %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -44,8 +46,8 @@ Summary(pl):	Modu³ j±dra Linuksa dla kart Intel(R) PRO/Wireless 2200
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires:	hotplug
-Requires:	ipw2200-firmware = 3.0
-Requires:	kernel-net-ieee80211 >= 1.1.13
+Requires:	ipw2200-firmware = %{_fwver}
+Requires:	kernel-net-ieee80211 >= %{_ieeever}
 %{?with_dist_kernel:%requires_releq_kernel_up}
 Requires(post,postun):	/sbin/depmod
 Requires:	module-init-tools >= 3.2.2-2
@@ -69,8 +71,8 @@ Summary(pl):	Modu³ j±dra Linuksa SMP dla kart Intel(R) PRO/Wireless 2200
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires:	hotplug
-Requires:	ipw2200-firmware = 3.0
-Requires:	kernel-smp-net-ieee80211 >= 1.1.13
+Requires:	ipw2200-firmware = %{_fwver}
+Requires:	kernel-smp-net-ieee80211 >= %{_ieeever}
 %{?with_dist_kernel:%requires_releq_kernel_smp}
 Requires(post,postun):	/sbin/depmod
 Requires:	module-init-tools >= 3.2.2-2
