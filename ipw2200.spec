@@ -45,7 +45,7 @@ Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires:	hotplug
 Requires:	ipw2200-firmware = 3.0
-Requires:	kernel-net-ieee80211 >= 1.1.12
+Requires:	kernel-net-ieee80211 >= 1.1.13
 %{?with_dist_kernel:%requires_releq_kernel_up}
 Requires(post,postun):	/sbin/depmod
 Requires:	module-init-tools >= 3.2.2-2
@@ -70,7 +70,7 @@ Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires:	hotplug
 Requires:	ipw2200-firmware = 3.0
-Requires:	kernel-smp-net-ieee80211 >= 1.1.12
+Requires:	kernel-smp-net-ieee80211 >= 1.1.13
 %{?with_dist_kernel:%requires_releq_kernel_smp}
 Requires(post,postun):	/sbin/depmod
 Requires:	module-init-tools >= 3.2.2-2
