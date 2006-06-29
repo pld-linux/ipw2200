@@ -4,7 +4,7 @@
 %bcond_without	smp		# don't build SMP module
 %bcond_with	verbose		# verbose build (V=1)
 #
-%define		_rel	2
+%define		_rel	3
 %define		_ieeever	1.1.13
 %define		_fwver	3.0
 Summary:	Intel(R) PRO/Wireless 2200 Driver for Linux
@@ -47,7 +47,7 @@ Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires:	hotplug
 Requires:	ipw2200-firmware = %{_fwver}
-Requires:	kernel-net-ieee80211 >= %{_ieeever}
+%(rpm -q --qf 'Requires: kernel%{_alt_kernel}-net-ieee80211 = %%{epoch}:%%{version}-%%{release}\n' ieee80211-devel | sed -e 's/ (none):/ /' | grep -v "is not")
 %{?with_dist_kernel:%requires_releq_kernel_up}
 Requires(post,postun):	/sbin/depmod
 Requires:	module-init-tools >= 3.2.2-2
@@ -72,7 +72,7 @@ Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires:	hotplug
 Requires:	ipw2200-firmware = %{_fwver}
-Requires:	kernel-smp-net-ieee80211 >= %{_ieeever}
+%(rpm -q --qf 'Requires: kernel%{_alt_kernel}-smp-net-ieee80211 = %{epoch}:%{version}-%{release}\n' ieee80211-devel | sed -e 's/ (none):/ /' | grep -v "is not")
 %{?with_dist_kernel:%requires_releq_kernel_smp}
 Requires(post,postun):	/sbin/depmod
 Requires:	module-init-tools >= 3.2.2-2
