@@ -60,7 +60,7 @@ This package contains Linux kernel drivers for the Intel(R)
 PRO/Wireless 2200 and 2915.
 
 %description -n kernel%{_alt_kernel}-net-%{name} -l de
-Dieses Packet enthält Linux Kernel Treiber für Intel(R) PRO/Wireless
+Dieses Paket enthält Linux Kernel Treiber für Intel(R) PRO/Wireless
 2200 und 2915 Netzwerk Karten.
 
 %description -n kernel%{_alt_kernel}-net-%{name} -l pl
@@ -85,7 +85,7 @@ This package contains Linux SMP kernel drivers for the Intel(R)
 PRO/Wireless 2200 and 2915.
 
 %description -n kernel%{_alt_kernel}-smp-net-%{name} -l de
-Dieses Packet enthält Linux SMP Kernel Treiber für Intel(R)
+Dieses Paket enthält Linux SMP Kernel Treiber für Intel(R)
 PRO/Wireless 2200 und 2915 Netzwerk Karten.
 
 %description -n kernel%{_alt_kernel}-smp-net-%{name} -l pl
