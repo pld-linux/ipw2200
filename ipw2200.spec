@@ -1,7 +1,3 @@
-#
-# TODO: check whats about with WPA on this driver, a lot of people
-#	meant there were problems with 1.1.3
-#
 # Conditional build:
 %bcond_without	dist_kernel	# allow non-distribution kernel
 %bcond_without	smp		# don't build SMP module
