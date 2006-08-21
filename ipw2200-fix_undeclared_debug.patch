@@ -1,0 +1,12 @@
+--- ipw2200-1.1.4/ipw2200.c	2006-08-21 13:17:22.000000000 +0200
++++ ipw2200-1.1.4/ipw2200.c-new	2006-08-21 13:18:54.000000000 +0200
+@@ -86,9 +86,7 @@
+ MODULE_LICENSE("GPL");
+ 
+ static int cmdlog = 0;
+-#ifdef CONFIG_IPW2200_DEBUG
+ static int debug = 0;
+-#endif
+ static int channel = 0;
+ static int mode = 0;
+ 
