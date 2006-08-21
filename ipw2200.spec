@@ -18,7 +18,7 @@ Source0:	http://dl.sourceforge.net/ipw2200/%{name}-%{version}.tgz
 # Source0-md5:	44a9adf90c6ecdea9dc11c39f6636471
 Patch0:		%{name}-monitor.patch
 Patch1:		%{name}-%{version}-patch_kernel.patch
-Patch2:		%{name}-fix_undeclared_debug.patch
+Patch2:		%{name}-%{version}-debug_fix.patch
 URL:		http://ipw2200.sourceforge.net/
 BuildRequires:	ieee80211-devel >= %{_ieeever}
 %{?with_dist_kernel:BuildRequires:	kernel%{_alt_kernel}-module-build >= 3:2.6.7}
