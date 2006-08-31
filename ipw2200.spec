@@ -108,7 +108,7 @@ for cfg in %{?with_dist_kernel:%{?with_smp:smp} up}%{!?with_dist_kernel:nondist}
 	ln -sf %{_kernelsrcdir}/include/linux/autoconf-$cfg.h o/include/linux/autoconf.h
 	ln -sf %{_kernelsrcdir}/Module.symvers-$cfg o/Module.symvers
 %if %{with dist_kernel}
-	%{__make} -C %{_kernelsrcdir} O=$PWD/o prepare scripts
+	%{__make} -C %{_kernelsrcdir} O=$PWD/o prepare scripts -j1
 %else
 	install -d o/include/config
 	touch o/include/config/MARKER
