@@ -3,7 +3,7 @@
 %bcond_without	smp		# don't build SMP module
 %bcond_with	verbose		# verbose build (V=1)
 #
-%define		_rel	1
+%define		_rel	2
 %define		_ieeever	1.2.15
 %define		_fwver	3.0
 Summary:	Intel(R) PRO/Wireless 2200 Driver for Linux
@@ -17,6 +17,9 @@ Group:		Base/Kernel
 Source0:	http://dl.sourceforge.net/ipw2200/%{name}-%{version}.tgz
 # Source0-md5:	cfd26b4526186d61a4feeaee217493b9
 Patch0:		%{name}-monitor.patch
+# Packet injection for ipw2200
+# http://tv.latinsud.com/ipw2200/ipw2200-1.1.4-inject.patch
+Patch1:		%{name}-1.1.4-inject.patch
 URL:		http://ipw2200.sourceforge.net/
 BuildRequires:	ieee80211-devel >= %{_ieeever}
 %{?with_dist_kernel:BuildRequires:	kernel%{_alt_kernel}-module-build >= 3:2.6.7}
@@ -90,6 +93,7 @@ PRO/Wireless 2200 oraz 2915.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 # kernel module(s)
