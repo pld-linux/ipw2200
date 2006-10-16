@@ -1,3 +1,11 @@
+#
+# TODO:	- build still depends on ieee80211-devel and kernel*-headers
+#	  installation order on builder machine.
+#	- there is a problem with unloading of ipw2200 module
+#	  IMHO we should make subpackage of the vanilla ipw2200
+#	  driver, rename this package to ipw2200_current (but not 
+#	  the contents of it) and add obsoletes to the both. 
+#
 # Conditional build:
 %bcond_without	dist_kernel	# allow non-distribution kernel
 %bcond_without	smp		# don't build SMP module
