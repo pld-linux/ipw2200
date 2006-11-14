@@ -1,20 +1,6 @@
---- ipw2200-1.2.0/Makefile.orig	2006-10-16 12:34:38.000000000 +0200
-+++ ipw2200-1.2.0/Makefile	2006-10-16 12:43:36.000000000 +0200
-@@ -13,7 +13,12 @@
- # NOTE: If you have previously added the IPW project to your kernel 
- # 	and configured it for inclusion, these settings will be 
- #	overridden by your kernel configuration.
--ifndef CONFIG_IPW2200
-+
-+# NOTE: for PLD default kernels - we have got enabled as an module 
-+# 	the standard IPW2200 driver (1.1.1 based) so CONFIG_IPW2200
-+# 	is always set - we have to redefine config options here. 
-+
-+ifdef CONFIG_IPW2200
- EXTERNAL_BUILD=y
- CONFIG_IPW2200=m
- CONFIG_IPW2200_DEBUG=y
-@@ -30,14 +35,14 @@
+--- ipw2200-1.2.0/Makefile.orig	2006-11-14 22:44:26.000000000 +0100
++++ ipw2200-1.2.0/Makefile	2006-11-14 22:46:17.000000000 +0100
+@@ -30,14 +30,14 @@ CONFIG_IPW2200_MONITOR=y
  # simply uncomment:
  #
  # NOTE:  To use RADIOTAP you must also enable MONITOR above.
