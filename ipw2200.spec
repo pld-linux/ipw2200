@@ -104,6 +104,7 @@ PRO/Wireless 2200 oraz 2915.
 %patch1 -p1
 %endif
 
+%build
 %build_kernel_modules -m %{name}
 
 %install
