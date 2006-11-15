@@ -14,6 +14,7 @@
 %define		_rel	2
 %define		_ieeever	1.2.15
 %define		_fwver	3.0
+%define		_mod_suffix	current
 Summary:	Intel(R) PRO/Wireless 2200 Driver for Linux
 Summary(de):	Intel(R) PRO/Wireless 2200 Treiber für Linux
 Summary(pl):	Sterownik dla Linuksa do kart Intel(R) PRO/Wireless 2200
@@ -29,7 +30,7 @@ Patch1:		%{name}-1.2.0-config.patch
 URL:		http://ipw2200.sourceforge.net/
 BuildRequires:	ieee80211-devel >= %{_ieeever}
 %{?with_dist_kernel:BuildRequires:	kernel%{_alt_kernel}-module-build >= 3:2.6.7}
-BuildRequires:	rpmbuild(macros) >= 1.308
+BuildRequires:	rpmbuild(macros) >= 1.330
 Requires:	ipw2200-firmware = %{_fwver}
 ExclusiveArch:	%{ix86} %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -103,58 +104,11 @@ PRO/Wireless 2200 oraz 2915.
 %patch1 -p1
 %endif
 
-%build
-# kernel module(s)
-rm -rf built
-mkdir -p built/{nondist,smp,up}
-for cfg in %{?with_dist_kernel:%{?with_smp:smp} up}%{!?with_dist_kernel:nondist}; do
-	if [ ! -r "%{_kernelsrcdir}/config-$cfg" ]; then
-		exit 1
-	fi
-	install -d o/include/linux
-	ln -sf %{_kernelsrcdir}/config-$cfg o/.config
-	ln -sf %{_kernelsrcdir}/include/linux/autoconf-$cfg.h o/include/linux/autoconf.h
-	ln -sf %{_kernelsrcdir}/Module.symvers-$cfg o/Module.symvers
-%if %{with dist_kernel}
-	%{__make} -j1 -C %{_kernelsrcdir} O=$PWD/o prepare scripts
-%else
-	install -d o/include/config
-	touch o/include/config/MARKER
-	ln -sf %{_kernelsrcdir}/scripts o/scripts
-%endif
-	export IEEE80211_INC=%{_kernelsrcdir}/include
-	%{__make} -C %{_kernelsrcdir} clean \
-		RCS_FIND_IGNORE="-name '*.ko' -o" \
-		SYSSRC=%{_kernelsrcdir} \
-		SYSOUT=$PWD/o \
-		M=$PWD O=$PWD/o \
-		%{?with_verbose:V=1}
-	%{__make} -C %{_kernelsrcdir} modules \
-		CC="%{__cc}" CPP="%{__cpp}" \
-		SYSSRC=%{_kernelsrcdir} \
-		SYSOUT=$PWD/o \
-		M=$PWD O=$PWD/o \
-		%{?with_verbose:V=1}
-	mv *.ko built/$cfg
-done
+%build_kernel_modules -m %{name}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}{,smp}/misc \
-	 $RPM_BUILD_ROOT%{_sysconfdir}/modprobe.d/%{_kernel_ver}{,smp}
-
-cd built
-install %{?with_dist_kernel:up}%{!?with_dist_kernel:nondist}/ipw2200.ko \
-	$RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc/ipw2200_current.ko
-echo "alias ipw2200 ipw2200_current" \
-	>> $RPM_BUILD_ROOT%{_sysconfdir}/modprobe.d/%{_kernel_ver}/ipw2200.conf
-
-%if %{with smp} && %{with dist_kernel}
-install smp/ipw2200.ko \
-	$RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/misc/ipw2200_current.ko
-echo "alias ipw2200 ipw2200_current" \
-	>> $RPM_BUILD_ROOT%{_sysconfdir}/modprobe.d/%{_kernel_ver}smp/ipw2200.conf
-%endif
+%install_kernel_modules -s %{_mod_suffix} -n %{name} -m %{name} -d misc
 
 %clean
 rm -rf $RPM_BUILD_ROOT
