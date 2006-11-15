@@ -105,11 +105,11 @@ PRO/Wireless 2200 oraz 2915.
 %endif
 
 %build
-%build_kernel_modules -m %{name}
+%build_kernel_modules -m ipw2200
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%install_kernel_modules -s %{_mod_suffix} -n %{name} -m %{name} -d misc
+%install_kernel_modules -s %{_mod_suffix} -n %{name} -m ipw2200 -d misc
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -128,12 +128,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n kernel%{_alt_kernel}-net-%{name}
 %defattr(644,root,root,755)
-/lib/modules/%{_kernel_ver}/misc/ipw2200*.ko*
-%{_sysconfdir}/modprobe.d/%{_kernel_ver}/ipw2200.conf
+/lib/modules/%{_kernel_ver}/misc/ipw2200-%{_mod_suffix}.ko*
+%{_sysconfdir}/modprobe.d/%{_kernel_ver}/%{name}.conf
 
 %if %{with smp} && %{with dist_kernel}
 %files -n kernel%{_alt_kernel}-smp-net-%{name}
 %defattr(644,root,root,755)
-/lib/modules/%{_kernel_ver}smp/misc/ipw2200*.ko*
-%{_sysconfdir}/modprobe.d/%{_kernel_ver}smp/ipw2200.conf
+/lib/modules/%{_kernel_ver}smp/misc/ipw2200-%{_mod_suffix}.ko*
+%{_sysconfdir}/modprobe.d/%{_kernel_ver}smp/%{name}.conf
 %endif
