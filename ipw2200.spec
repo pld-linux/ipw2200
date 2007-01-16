@@ -23,7 +23,7 @@ Version:	1.2.1
 Release:	%{_rel}
 License:	GPL v2
 Group:		Base/Kernel
-Source0:	http://switch.dl.sourceforge.net/sourceforge/ipw2200/%{name}-%{version}.tgz
+Source0:	http://dl.sourceforge.net/ipw2200/%{name}-%{version}.tgz
 # Source0-md5:	8fa60fdc32f95e9ec9cf18b0c26f2e91
 Patch0:		%{name}-monitor.patch
 Patch1:		%{name}-1.2.0-config.patch
