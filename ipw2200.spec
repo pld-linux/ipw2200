@@ -17,8 +17,8 @@
 %define		_fwver	3.0
 %define		_mod_suffix	current
 Summary:	Intel(R) PRO/Wireless 2200 Driver for Linux
-Summary(de.UTF-8):   Intel(R) PRO/Wireless 2200 Treiber für Linux
-Summary(pl.UTF-8):   Sterownik dla Linuksa do kart Intel(R) PRO/Wireless 2200
+Summary(de.UTF-8):	Intel(R) PRO/Wireless 2200 Treiber für Linux
+Summary(pl.UTF-8):	Sterownik dla Linuksa do kart Intel(R) PRO/Wireless 2200
 Name:		ipw2200
 Version:	1.2.1
 Release:	%{_rel}
@@ -50,8 +50,8 @@ mini PCI Intel PRO/Wireless 2200/2915 Network Connection.
 
 %package -n kernel%{_alt_kernel}-net-%{name}
 Summary:	Linux kernel module for the Intel(R) PRO/Wireless 2200
-Summary(de.UTF-8):   Linux Kernel Modul für Intel(R) PRo/Wireless 2200 Netzwerkkarten
-Summary(pl.UTF-8):   Moduł jądra Linuksa dla kart Intel(R) PRO/Wireless 2200
+Summary(de.UTF-8):	Linux Kernel Modul für Intel(R) PRo/Wireless 2200 Netzwerkkarten
+Summary(pl.UTF-8):	Moduł jądra Linuksa dla kart Intel(R) PRO/Wireless 2200
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires:	hotplug
@@ -75,8 +75,8 @@ PRO/Wireless 2200 oraz 2915.
 
 %package -n kernel%{_alt_kernel}-smp-net-%{name}
 Summary:	Linux SMP kernel module for the Intel(R) PRO/Wireless 2200
-Summary(de.UTF-8):   Linux SMP Kernel Modul für Intel(R) PRO/Wireless 2200 Netzwerkkarten
-Summary(pl.UTF-8):   Moduł jądra Linuksa SMP dla kart Intel(R) PRO/Wireless 2200
+Summary(de.UTF-8):	Linux SMP Kernel Modul für Intel(R) PRO/Wireless 2200 Netzwerkkarten
+Summary(pl.UTF-8):	Moduł jądra Linuksa SMP dla kart Intel(R) PRO/Wireless 2200
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires:	hotplug
