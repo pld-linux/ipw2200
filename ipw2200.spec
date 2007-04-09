@@ -28,7 +28,7 @@ Patch0:		%{name}-monitor.patch
 Patch1:		%{name}-1.2.0-config.patch
 URL:		http://ipw2200.sourceforge.net/
 BuildRequires:	ieee80211-devel >= %{_ieeever}
-%{?with_dist_kernel:BuildRequires:	kernel%{_alt_kernel}-module-build >= 3:2.6.7}
+%{?with_dist_kernel:BuildRequires:	kernel%{_alt_kernel}-module-build >= 3:2.6.20.2}
 BuildRequires:	rpmbuild(macros) >= 1.379
 Requires:	ipw2200-firmware = %{_fwver}
 ExclusiveArch:	%{ix86} %{x8664}
