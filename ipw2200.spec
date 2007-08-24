@@ -11,19 +11,19 @@
 %bcond_with	verbose		# verbose build (V=1)
 #
 %define		_rel	1
-%define		_ieeever	1.2.15
+%define		_ieeever	1.2.17
 %define		_fwver	3.0
 %define		_mod_suffix	current
 Summary:	Intel(R) PRO/Wireless 2200 Driver for Linux
 Summary(de.UTF-8):	Intel(R) PRO/Wireless 2200 Treiber für Linux
 Summary(pl.UTF-8):	Sterownik dla Linuksa do kart Intel(R) PRO/Wireless 2200
 Name:		ipw2200
-Version:	1.2.1
+Version:	1.2.2
 Release:	%{_rel}
 License:	GPL v2
 Group:		Base/Kernel
 Source0:	http://dl.sourceforge.net/ipw2200/%{name}-%{version}.tgz
-# Source0-md5:	8fa60fdc32f95e9ec9cf18b0c26f2e91
+# Source0-md5:	570959316e56765716824b89adf88d31
 Patch0:		%{name}-monitor.patch
 Patch1:		%{name}-1.2.0-config.patch
 URL:		http://ipw2200.sourceforge.net/
