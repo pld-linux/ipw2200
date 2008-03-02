@@ -26,6 +26,7 @@ Source0:	http://dl.sourceforge.net/ipw2200/%{name}-%{version}.tgz
 # Source0-md5:	570959316e56765716824b89adf88d31
 Patch0:		%{name}-monitor.patch
 Patch1:		%{name}-1.2.0-config.patch
+Patch2:		%{name}-2.6.24.patch
 URL:		http://ipw2200.sourceforge.net/
 BuildRequires:	ieee80211-devel >= %{_ieeever}
 %{?with_dist_kernel:BuildRequires:	kernel%{_alt_kernel}-module-build >= 3:2.6.20.2}
@@ -77,6 +78,7 @@ PRO/Wireless 2200 oraz 2915.
 %if %{with dist_kernel}
 %patch1 -p1
 %endif
+%patch2 -p1
 
 %build
 %build_kernel_modules -m ipw2200
